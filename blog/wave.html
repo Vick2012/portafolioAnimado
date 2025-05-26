@@ -81,14 +81,42 @@
   <link rel="stylesheet" href="../assets/css/article.css" />
   <link rel="stylesheet" href="../assets/css/footer.css" />
   <link rel="icon" type="image/webp" href="../assets/images/blog/blog.webp">
+  <!-- Scripts optimizados -->
   <script src="../assets/js/article-parallax.js" defer></script>
+  <script>
+    // Carga condicional y diferida de tsParticles y particles.js
+    function loadParticles() {
+      if (document.getElementById('tsparticles')) {
+        var script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js';
+        script.async = true;
+        script.onload = function() {
+          var particlesScript = document.createElement('script');
+          particlesScript.src = '../assets/js/particles.js';
+          particlesScript.defer = true;
+          document.body.appendChild(particlesScript);
+        };
+        document.body.appendChild(script);
+      }
+    }
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadParticles);
+    } else {
+      window.addEventListener('DOMContentLoaded', loadParticles);
+    }
+  </script>
+  <style>
+    .article-header {
+      min-height: 450px;
+    }
+  </style>
 </head>
 
 <body class="bg-wave">
   <main class="article-main">
     <article>
       <header class="article-header">
-        <img src="../assets/images/blog/wave.webp" alt="Ejemplo de validación con WAVE" itemprop="image" width="800" height="450">
+        <img src="../assets/images/blog/wave.webp" alt="Ejemplo de validación con WAVE" itemprop="image" width="800" height="450" fetchpriority="high" />
         <div class="article-header-content">
           <div class="article-meta">
             <time datetime="2024-03-10" itemprop="datePublished">10 de marzo de 2024</time>

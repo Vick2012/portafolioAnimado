@@ -31,6 +31,8 @@
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
   </noscript>
+  <!-- Preload de la fuente Poppins WOFF2 para mejorar LCP -->
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/poppins/v23/pxiByp8kv8JHgFVrLDz8Z1xlEA.woff2" type="font/woff2" crossorigin>
 
   <!-- Preconexión con dominios de fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -118,56 +120,42 @@
   }
   </script>
 
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <!-- Google Tag Manager y Google Analytics 4 diferidos para mejorar LCP/FCP -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX', {
-        'page_title': 'Portafolio - Victor Alarcón',
-        'page_location': window.location.href,
-        'page_path': window.location.pathname,
-        'send_page_view': true
-    });
+    window.addEventListener('DOMContentLoaded', function() {
+      // Google Tag Manager
+      (function(w,d,s,l,i){
+        w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+        f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WZL5KCS2');
 
-    // Eventos personalizados
-    document.addEventListener('DOMContentLoaded', function() {
-        // Tracking de clicks en proyectos
-        document.querySelectorAll('.project-card a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                gtag('event', 'click_project', {
-                    'project_name': this.closest('.card').querySelector('h4').textContent,
-                    'project_url': this.href
-                });
-            });
+      // Google Analytics 4
+      var ga = document.createElement('script');
+      ga.async = true;
+      ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+      document.head.appendChild(ga);
+      ga.onload = function() {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX', {
+          'page_title': 'Portafolio - Victor Alarcón',
+          'page_location': window.location.href,
+          'page_path': window.location.pathname,
+          'send_page_view': true
         });
-
-        // Tracking de secciones visitadas
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    gtag('event', 'view_section', {
-                        'section_name': entry.target.id,
-                        'section_title': entry.target.querySelector('h2')?.textContent || entry.target.id
-                    });
-                }
-            });
-        }, { threshold: 0.5 });
-
-        document.querySelectorAll('section.slide').forEach(section => {
-            observer.observe(section);
-        });
+      }
     });
   </script>
-  <!-- End Google Analytics 4 -->
 </head>
 
 <body>
   <div id="tsparticles"></div>
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZL5KCS2" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe></noscript>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZL5KCS2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
   <button id="theme-toggle" class="theme-button" aria-label="Cambiar tema">🌙 Dark Mode</button>
   <header>
@@ -285,8 +273,7 @@
           </div>
           <div class="floating-circles">
             <div class="circle circle-main">
-              <img src="images/perfil.webp" width="300" height="300" alt="Foto de Víctor Alarcón" fetchpriority="high"
-                loading="eager" decoding="async" style="width:300px;height:300px;display:block;" />
+              <img src="images/perfil.webp" width="300" height="300" alt="Foto de Víctor Alarcón" fetchpriority="high" loading="eager" decoding="async" style="width:300px;height:300px;display:block;" />
             </div>
             <div class="circle circle-back-1"></div>
             <div class="circle circle-back-2"></div>
@@ -317,8 +304,7 @@
     <section id="slide-1" class="slide" aria-label="Sobre mí" itemscope itemtype="https://schema.org/AboutPage">
       <div class="about-container">
         <div class="about-image">
-          <img src="images/me.webp" alt="Foto profesional de Victor Alarcón" loading="lazy" width="400" height="400"
-            itemprop="image" />
+          <img src="images/me.webp" alt="Foto profesional de Victor Alarcón" loading="lazy" width="400" height="400" itemprop="image" />
         </div>
         <div class="about-text">
           <h2 class="about-title">About Me</h2>
@@ -399,14 +385,14 @@
       </div>
 
       <div class="background-image">
-        <img src="images/background.webp" alt="Imagen de fondo con laptop" loading="lazy" itemprop="image" />
+        <img src="images/background.webp" alt="Imagen de fondo con laptop" loading="lazy" width="600" height="400" itemprop="image" />
       </div>
     </section>
 
     <section id="slide-3" class="slide" aria-label="Proyectos" itemscope itemtype="https://schema.org/ItemList">
       <div class="project-card-layout">
         <div class="project-image">
-          <img src="images/project.webp" alt="Imagen de aplicación móvil de inventario" loading="lazy" />
+          <img src="images/project.webp" alt="Imagen de aplicación móvil de inventario" loading="lazy" width="600" height="400" />
         </div>
 
         <div class="project-cards">
@@ -505,12 +491,50 @@
       });
     });
   </script>
-  <!-- Librería tsParticles -->
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
-
-  <!-- Tu script personalizado -->
-  <script src="assets/js/particles.js" defer></script>
+  <!-- Scripts optimizados -->
   <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/carrusel.js" defer></script>
+  <script>
+    // Carga condicional y diferida de tsParticles y particles.js
+    function loadParticles() {
+      if (document.getElementById('tsparticles')) {
+        var script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js';
+        script.async = true;
+        script.onload = function() {
+          var particlesScript = document.createElement('script');
+          particlesScript.src = 'assets/js/particles.js';
+          particlesScript.defer = true;
+          document.body.appendChild(particlesScript);
+        };
+        document.body.appendChild(script);
+      }
+    }
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadParticles);
+    } else {
+      window.addEventListener('DOMContentLoaded', loadParticles);
+    }
+  </script>
+  <style>
+    /* Reservar espacio para el carousel y evitar CLS */
+    #carousel {
+      min-height: 700px;
+    }
+    .circle-main img {
+      display: block;
+      width: 300px;
+      height: 300px;
+    }
+    .about-image img {
+      width: 400px;
+      height: 400px;
+    }
+    .background-image img, .project-image img {
+      width: 600px;
+      height: 400px;
+    }
+  </style>
 </body>
 
 </html>

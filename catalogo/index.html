@@ -40,6 +40,7 @@
     
     <!-- Fuentes -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel+Decorative:wght@700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="font" href="https://fonts.gstatic.com/s/montserrat/v25/JTUQjIg1_i6t8kCHKm45_QphziTn89dtpQ.woff2" type="font/woff2" crossorigin>
     
     <!-- Estilos -->
     <link rel="stylesheet" href="../assets/css/catalogo.css">
@@ -256,7 +257,7 @@
         <div class="banner-img-wrapper">
             <div class="banner-cristal-center">
                 <img src="../assets/images/perfumes/cristal.webp" alt="Cristales dorados" class="banner-cristal-img" />
-                <img src="../assets/images/perfumes/principal.webp" alt="Perfume destacado" class="banner-perfume-img" />
+                <img src="../assets/images/perfumes/principal.webp" alt="Catálogo de Perfumes de Lujo" width="1200" height="600" fetchpriority="high" style="width:100%;height:auto;" />
             </div>
             <canvas id="goldParticles"></canvas>
             <div class="banner-hero-text">
@@ -399,10 +400,29 @@
     </button>
 
     <!-- Scripts optimizados -->
-    <!-- tsParticles -->
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.2.2/tsparticles.bundle.min.js"></script>
     <script src="../assets/js/catalogo.js" defer></script>
-    <script src="../assets/js/particles.js" defer></script>
+    <script>
+      // Carga condicional y diferida de tsParticles y particles.js
+      function loadParticles() {
+        if (document.getElementById('tsparticles')) {
+          var script = document.createElement('script');
+          script.src = 'https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js';
+          script.async = true;
+          script.onload = function() {
+            var particlesScript = document.createElement('script');
+            particlesScript.src = '../assets/js/particles.js';
+            particlesScript.defer = true;
+            document.body.appendChild(particlesScript);
+          };
+          document.body.appendChild(script);
+        }
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadParticles);
+      } else {
+        window.addEventListener('DOMContentLoaded', loadParticles);
+      }
+    </script>
     
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZL5KCS2"
@@ -438,5 +458,10 @@
         }
     }
     </script>
+    <style>
+      .catalog-header {
+        min-height: 600px;
+      }
+    </style>
 </body>
 </html> 
