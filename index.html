@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es" class="dark-theme" itemscope itemtype="https://schema.org/WebSite">
+
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-WZL5KCS2');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Portafolio de Victor Alarcón, Ingeniero de Software apasionado por la tecnología y los desafíos.">
+  <title>Portafolio | Victor Alarcón</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.png" />
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
+  <!-- Preload imagen principal optimizada -->
+  <link rel="preload" as="image" href="images/perfil_optimizada.webp" type="image/webp">
+
+  <!-- Preload y carga no bloqueante de Google Fonts -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+  </noscript>
+
+  <!-- Preconexión con dominios de fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Hoja de estilos principal no bloqueante -->
+  <link rel="stylesheet" href="assets/css/styles.css" media="print" onload="this.media='all'">
+
+  <!-- Script para aplicar tema claro u oscuro antes de pintar -->
+  <script>
+    const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    if (theme === 'light') document.documentElement.classList.replace('dark-theme', 'light-theme');
+  </script>
+
+  <!-- Schema.org markup para WebSite -->
+  <script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Victor Alarcón - Portafolio",
+      "url": "https://tudominio.com",
+      "description": "Portafolio profesional de Victor Alarcón, Ingeniero de Software especializado en desarrollo web y aplicaciones.",
+      "publisher": {
+          "@type": "Organization",
+          "name": "Victor Alarcón",
+          "logo": {
+              "@type": "ImageObject",
+              "url": "https://tudominio.com/images/logo.png"
+          }
+      },
+      "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://tudominio.com/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+      }
+  }
+  </script>
+
+  <!-- Schema.org markup para Person -->
+  <script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Victor Alarcón",
+      "url": "https://tudominio.com",
+      "image": "https://tudominio.com/images/me.webp",
+      "jobTitle": "Ingeniero de Software",
+      "worksFor": {
+          "@type": "Organization",
+          "name": "Universidad Manuela Beltrán"
+      },
+      "sameAs": [
+          "https://github.com/Vick2012",
+          "https://linkedin.com/in/victor-alarcon"
+      ],
+      "knowsAbout": [
+          "Desarrollo Web",
+          "JavaScript",
+          "Python",
+          "Java",
+          "C#",
+          "Node.js",
+          "MySQL",
+          "MongoDB",
+          "PostgreSQL",
+          "AWS",
+          "Azure"
+      ],
+      "hasCredential": [
+          {
+              "@type": "EducationalCredential",
+              "credentialCategory": "degree",
+              "educationalLevel": "Bachelor",
+              "name": "Ingeniería de Software"
+          },
+          {
+              "@type": "EducationalCredential",
+              "name": "AWS Certified Developer"
+          },
+          {
+              "@type": "EducationalCredential",
+              "name": "Scrum Master Certification"
+          }
+      ]
+  }
+  </script>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', {
+        'page_title': 'Portafolio - Victor Alarcón',
+        'page_location': window.location.href,
+        'page_path': window.location.pathname,
+        'send_page_view': true
+    });
+
+    // Eventos personalizados
+    document.addEventListener('DOMContentLoaded', function() {
+        // Tracking de clicks en proyectos
+        document.querySelectorAll('.project-card a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                gtag('event', 'click_project', {
+                    'project_name': this.closest('.card').querySelector('h4').textContent,
+                    'project_url': this.href
+                });
+            });
+        });
+
+        // Tracking de secciones visitadas
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    gtag('event', 'view_section', {
+                        'section_name': entry.target.id,
+                        'section_title': entry.target.querySelector('h2')?.textContent || entry.target.id
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('section.slide').forEach(section => {
+            observer.observe(section);
+        });
+    });
+  </script>
+  <!-- End Google Analytics 4 -->
+</head>
+
+<body>
+  <div id="tsparticles"></div>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZL5KCS2" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <button id="theme-toggle" class="theme-button" aria-label="Cambiar tema">🌙 Dark Mode</button>
+  <header>
+    <div class="social-icons" data-aos="fade-down">
+      <!-- Facebook -->
+      <a href="https://facebook.com" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <title>Facebook</title>
+          <path d="M22.675 0H1.325C.593 0 0 .593 0 1.326v21.348C0 23.407.593 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 
+            1.893-4.788 4.659-4.788 1.325 0 2.464.099 2.796.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.313h3.587l-.467 
+            3.622h-3.12V24h6.116C23.407 24 24 23.407 24 22.674V1.326C24 .593 23.407 0 22.675 0z" />
+        </svg>
+      </a>
+      <!-- LinkedIn -->
+      <a href="https://linkedin.com/in/victoralarcon2012" aria-label="LinkedIn" target="_blank"
+        rel="noopener noreferrer">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <title>LinkedIn</title>
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.327-.027-3.037-1.85-3.037-1.853 0-2.136 1.445-2.136 2.937v5.669h
+            -3.554V9h3.414v1.561h.049c.476-.9 1.637-1.848 3.372-1.848 3.605 0 4.269 2.373 4.269 5.459v6.28zM5.337 
+            7.433c-1.144 0-2.069-.926-2.069-2.069 0-1.143.925-2.068 2.069-2.068 1.143 0 2.068.925 2.068 2.068 0 1.143-.925 
+            2.069-2.068 2.069zM6.894 20.452H3.781V9h3.113v11.452zM22.225 0H1.771C.792 0 0 .771 0 1.729v20.542C0 23.229.792 
+            24 1.771 24h20.451C23.2 24 24 23.229 24 22.271V1.729C24 .771 23.2 0 22.225 0z" />
+        </svg>
+      </a>
+
+      <!-- Correo -->
+      <a href="mailto:victorsloan2012@gmail.com" aria-label="Correo electrónico">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <title>Correo</title>
+          <path
+            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 1.99 2H20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+        </svg>
+      </a>
+
+      <!-- GitHub -->
+      <a href="https://github.com/Vick2012" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <title>GitHub</title>
+          <path
+            d="M12 .5C5.73.5.5 5.73.5 12.02c0 5.1 3.29 9.42 7.85 10.96.57.1.78-.25.78-.55v-1.93c-3.2.7-3.87-1.53-3.87-1.53-.52-1.32-1.27-1.68-1.27-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.72 0-1.26.46-2.3 1.2-3.1-.12-.29-.52-1.45.11-3.02 0 0 .98-.31 3.2 1.18a11.1 11.1 0 015.83 0c2.22-1.5 3.2-1.18 3.2-1.18.63 1.57.23 2.73.11 3.02.75.8 1.2 1.84 1.2 3.1 0 4.45-2.68 5.43-5.23 5.72.41.35.77 1.05.77 2.13v3.16c0 .3.21.66.79.55A10.52 10.52 0 0023.5 12c0-6.29-5.23-11.5-11.5-11.5z" />
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <main id="carousel">
+    <section id="slide-0" class="slide active" aria-label="Portada" itemscope itemtype="https://schema.org/Person">
+      <div class="slide0-flex">
+        <div class="slide0-info">
+          <div class="top-bar">
+            <div class="portfolio-title-block">
+              <h1 class="portfolio-label">PORTAFOLIO</h1>
+              <p class="portfolio-subtitle" itemprop="jobTitle">Ingeniero de Software | Apasionado por la tecnología y por los desafíos.</p>
+              <meta itemprop="name" content="Victor Alarcón">
+              <meta itemprop="url" content="https://tudominio.com">
+              <meta itemprop="image" content="https://tudominio.com/images/me.webp">
+            </div>
+            <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+              <span class="menu-icon"></span>
+            </button>
+            <nav class="main-nav" aria-label="Navegación principal">
+              <ul class="nav-links">
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="blog/index.html" id="blog-link">Blog</a></li>
+                <li><a href="catalogo/index.html">Catálogo</a></li>
+              </ul>
+            </nav>
+            <div class="contact-info">
+              <p>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                  style="min-width:20px;min-height:20px;margin-right:10px;display:inline-block;vertical-align:middle;">
+                  <path
+                    d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z" />
+                </svg>
+                Bogotá, Colombia
+              </p>
+
+              <p>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                  style="min-width:20px;min-height:20px;margin-right:10px;display:inline-block;vertical-align:middle;">
+                  <path
+                    d="M6.62 10.79a15.91 15.91 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.2.49 2.5.76 3.83.76a1 1 0 011 1V20a1 1 0 01-1 1C10.28 21 3 13.72 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.33.27 2.63.76 3.83a1 1 0 01-.21 1.11l-2.43 2.43z" />
+                </svg>
+                +57 3058138022
+              </p>
+
+              <p>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                  style="min-width:20px;min-height:20px;margin-right:10px;display:inline-block;vertical-align:middle;">
+                  <path
+                    d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+                victorsloan2012@gmail.com
+              </p>
+
+              <p>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                  style="min-width:20px;min-height:20px;margin-right:10px;display:inline-block;vertical-align:middle;">
+                  <path
+                    d="M19 0h-14C2.238 0 0 2.238 0 5v14c0 2.762 2.238 5 5 5h14c2.762 0 5-2.238 5-5V5c0-2.762-2.238-5-5-5zM7.5 19H4V9h3.5v10zM5.75 7.5C4.784 7.5 4 6.716 4 5.75S4.784 4 5.75 4 7.5 4.784 7.5 5.75 6.716 7.5 5.75 7.5zM20 19h-3.5v-5c0-1.379-1.121-2.5-2.5-2.5S11.5 12.121 11.5 13.5V19z" />
+                </svg>
+                <a href="https://linkedin.com/in/victoralarcon2012" target="_blank">LinkedIn</a>
+              </p>
+
+              <p>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                  style="min-width:20px;min-height:20px;margin-right:10px;display:inline-block;vertical-align:middle;">
+                  <path
+                    d="M12 .5C5.73.5.5 5.73.5 12.02c0 5.1 3.29 9.42 7.85 10.96.57.1.78-.25.78-.55v-1.93c-3.2.7-3.87-1.53-3.87-1.53-.52-1.32-1.27-1.68-1.27-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.72 0-1.26.46-2.3 1.2-3.1-.12-.29-.52-1.45.11-3.02 0 0 .98-.31 3.2 1.18a11.1 11.1 0 015.83 0c2.22-1.5 3.2-1.18 3.2-1.18.63 1.57.23 2.73.11 3.02.75.8 1.2 1.84 1.2 3.1 0 4.45-2.68 5.43-5.23 5.72.41.35.77 1.05.77 2.13v3.16c0 .3.21.66.79.55A10.52 10.52 0 0023.5 12c0-6.29-5.23-11.5-11.5-11.5z" />
+                </svg>
+                <a href="https://github.com/Vick2012" target="_blank">GitHub</a>
+              </p>
+            </div>
+          </div>
+          <div class="floating-circles">
+            <div class="circle circle-main">
+              <img src="images/perfil.webp" width="300" height="300" alt="Foto de Víctor Alarcón" fetchpriority="high"
+                loading="eager" decoding="async" style="width:300px;height:300px;display:block;" />
+            </div>
+            <div class="circle circle-back-1"></div>
+            <div class="circle circle-back-2"></div>
+          </div>
+          <div class="profile-info">
+            <h2 class="name" itemprop="name">Victor Alfonso Alarcón Ospina</h2>
+            <h3 class="title" itemprop="jobTitle">SOFTWARE ENGINEER</h3>
+          </div>
+        </div>
+        <div class="banners-redirect">
+          <div class="portfolio-banner">
+            <a href="https://portafolisw.netlify.app/?utm_source=victor&utm_medium=banner&utm_campaign=portafolio&utm_id=banner-1"
+              target="_blank">
+              <h2>Visita el Portafolio de Santiago Castro González</h2>
+              <p>Descubre mis proyectos en Ingeniería de Software y Desarrollo Web.</p>
+            </a>
+          </div>
+          <div class="portfolio-banner">
+            <a href="https://samuelortizospina.me/?utm_source=santiago&utm_medium=banner&utm_campaign=portafolio+web&utm_id=banner-1"
+              target="_blank">
+              <h2>Visita el Portafolio de Samuel Ortiz Ospina</h2>
+              <p>Ingeniero de Software | Especialista en Backend & Análisis de Datos</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="slide-1" class="slide" aria-label="Sobre mí" itemscope itemtype="https://schema.org/AboutPage">
+      <div class="about-container">
+        <div class="about-image">
+          <img src="images/me.webp" alt="Foto profesional de Victor Alarcón" loading="lazy" width="400" height="400"
+            itemprop="image" />
+        </div>
+        <div class="about-text">
+          <h2 class="about-title">About Me</h2>
+          <p class="about-description" itemprop="description">
+            Soy un ingeniero de software dedicado, orientado a resultados, con experiencia en el
+            desarrollo de soluciones escalables, seguras y centradas en el usuario. Me apasiona transformar
+            ideas complejas en productos funcionales mediante el uso de tecnologías modernas y buenas prácticas
+            de ingeniería. Trabajo con enfoque en la calidad, la eficiencia y la colaboración,
+            aportando valor a la construccion de los proyectos.
+          </p>
+
+          <div class="experience-list">
+            <div class="experience-item">
+              <strong class="position" itemprop="jobTitle">SOFTWARE ENGINEER</strong>
+              <div class="company" itemprop="affiliation">Universidad Manuela Beltrán (2022 - 2026)</div>
+            </div>
+            <div class="experience-item">
+              <strong class="position" itemprop="jobTitle">SENIOR SOFTWARE DEVELOPER</strong>
+              <div class="company" itemprop="affiliation">CodeCraft Solutions (20XX–20XX)</div>
+            </div>
+            <div class="experience-item">
+              <strong class="position" itemprop="jobTitle">LEAD SOFTWARE DEVELOPER</strong>
+              <div class="company" itemprop="affiliation">InnovateTech Labs (20XX–20XX)</div>
+            </div>
+            <div class="experience-item">
+              <strong class="position" itemprop="jobTitle">SOFTWARE MANAGER</strong>
+              <div class="company" itemprop="affiliation">NexGen Software (20XX–20XX)</div>
+            </div>
+            <div class="experience-item">
+              <strong class="position" itemprop="jobTitle">JUNIOR SOFTWARE DEVELOPER</strong>
+              <div class="company" itemprop="affiliation">Tech Solutions Co. (20XX–20XX)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="slide-2" class="slide" aria-label="Background y habilidades" itemscope itemtype="https://schema.org/ItemList">
+      <h2 class="background-title">Background</h2>
+      <div class="background-grid">
+        <div class="background-column" itemscope itemtype="https://schema.org/ItemList">
+          <h3>CERTIFICATIONS</h3>
+          <ul>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/EducationalCredential">
+              <span itemprop="name">AWS Certified Developer</span>
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/EducationalCredential">
+              <span itemprop="name">Scrum Master Certification</span>
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/EducationalCredential">
+              <span itemprop="name">Amazon Web Services</span>
+            </li>
+          </ul>
+        </div>
+        <div class="background-column">
+          <h3>PROGRAMMING LANGUAGES</h3>
+          <ul>
+            <li itemprop="knowsAbout">Java</li>
+            <li itemprop="knowsAbout">Python</li>
+            <li itemprop="knowsAbout">C#</li>
+            <li itemprop="knowsAbout">JavaScript (Node.js)</li>
+          </ul>
+        </div>
+        <div class="background-column">
+          <h3>DATABASE TECHNOLOGIES</h3>
+          <ul>
+            <li itemprop="knowsAbout">MySQL</li>
+            <li itemprop="knowsAbout">MongoDB</li>
+            <li itemprop="knowsAbout">PostgreSQL</li>
+          </ul>
+        </div>
+        <div class="background-column">
+          <h3>CLOUD SERVICES</h3>
+          <ul>
+            <li itemprop="knowsAbout">Amazon Web Services</li>
+            <li itemprop="knowsAbout">Microsoft Azure</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="background-image">
+        <img src="images/background.webp" alt="Imagen de fondo con laptop" loading="lazy" itemprop="image" />
+      </div>
+    </section>
+
+    <section id="slide-3" class="slide" aria-label="Proyectos" itemscope itemtype="https://schema.org/ItemList">
+      <div class="project-card-layout">
+        <div class="project-image">
+          <img src="images/project.webp" alt="Imagen de aplicación móvil de inventario" loading="lazy" />
+        </div>
+
+        <div class="project-cards">
+          <h2 class="project-title">Project</h2>
+          <h3 class="project-subtitle">Mobile App Development for Inventory Management</h3>
+
+          <div class="card" itemscope itemtype="https://schema.org/SoftwareApplication">
+            <h4 itemprop="name">Sistema de Gestión ERP</h4>
+            <p itemprop="description">ERP especializado en controlar, planificar y optimizar operaciones logísticas.
+              Integra procesos en una sola plataforma.</p>
+            <p><strong>Tecnologías:</strong> <span itemprop="applicationCategory">Web Application</span></p>
+            <p><strong>Lenguajes:</strong> <span itemprop="programmingLanguage">React, Node.js, MongoDB</span></p>
+            <meta itemprop="operatingSystem" content="Web">
+            <meta itemprop="browserRequirements" content="Requires JavaScript. Requires HTML5.">
+            <a href="https://github.com/Vick2012/ERP-pc.git" itemprop="downloadUrl" target="_blank">Ver ERP en GitHub</a>
+          </div>
+
+          <div class="card" itemscope itemtype="https://schema.org/SoftwareApplication">
+            <h4 itemprop="name">API de Tareas</h4>
+            <p itemprop="description">API RESTful para gestionar tareas con autenticación.</p>
+            <p><strong>Tecnologías:</strong> <span itemprop="applicationCategory">Web API</span></p>
+            <p><strong>Lenguajes:</strong> <span itemprop="programmingLanguage">FastAPI, PostgreSQL, Python</span></p>
+            <meta itemprop="operatingSystem" content="Any">
+            <meta itemprop="browserRequirements" content="Requires API access">
+            <a href="https://github.com/Vick2012/Api.git" itemprop="downloadUrl" target="_blank">Ver API en GitHub</a>
+          </div>
+
+          <div class="card" itemscope itemtype="https://schema.org/SoftwareApplication">
+            <h4 itemprop="name">Portafolio Personal</h4>
+            <p itemprop="description">Sitio web personal para mostrar mis proyectos y habilidades.</p>
+            <p><strong>Tecnologías:</strong> <span itemprop="programmingLanguage">Python, Reflex, HTML5, CSS, JS,
+                Node.js (SASS)</span></p>
+            <a href="https://github.com/Vick2012/Portafolio.git" itemprop="downloadUrl" target="_blank">Ver Portafolio en
+              GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="nav-buttons" aria-label="Navegación entre secciones">
+    <button id="prevSlide">Anterior</button>
+    <button id="nextSlide">Siguiente</button>
+  </nav>
+
+  <script defer>
+    document.addEventListener("DOMContentLoaded", () => {
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slide");
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.style.opacity = i === index ? "1" : "0"; // Añadir transición de opacidad
+          slide.classList.toggle("active", i === index);
+        });
+      }
+
+      // Añadir transición suave mediante CSS
+      slides.forEach(slide => {
+        slide.style.transition = "opacity 0.5s ease-in-out";
+      });
+
+      showSlide(currentSlide);
+
+      document.getElementById("prevSlide").addEventListener("click", () => {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+      });
+
+      document.getElementById("nextSlide").addEventListener("click", () => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      });
+    });
+  </script>
+
+  <script defer>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleBtn = document.getElementById("theme-toggle");
+      const body = document.body;
+      toggleBtn.innerHTML = body.classList.contains("dark-theme") ? "☀️" : "🌙";
+      toggleBtn.addEventListener("click", () => {
+        const isDark = body.classList.contains("dark-theme");
+        body.classList.toggle("dark-theme", !isDark);
+        body.classList.toggle("light-theme", isDark);
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        toggleBtn.innerHTML = isDark ? "☀️" : "🌙";
+      });
+    });
+  </script>
+  <script defer>
+    document.addEventListener("DOMContentLoaded", () => {
+      const images = document.querySelectorAll("img.lazy-load");
+      images.forEach(img => {
+        img.src = img.dataset.src;
+      });
+    });
+  </script>
+  <!-- Librería tsParticles -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+
+  <!-- Tu script personalizado -->
+  <script src="assets/js/particles.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</body>
+
+</html>

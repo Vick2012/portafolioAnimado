@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es" itemscope itemtype="https://schema.org/WebPage">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página no encontrada | Victor Alarcón</title>
+    <meta name="description" content="Lo sentimos, la página que buscas no existe. Regresa a la página principal o navega por nuestro sitio.">
+    
+    <!-- Microetiquetado para página de error -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Página no encontrada",
+        "description": "Lo sentimos, la página que buscas no existe. Regresa a la página principal o navega por nuestro sitio.",
+        "url": "https://tudominio.com/404.html",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Victor Alarcón - Portafolio",
+            "url": "https://tudominio.com"
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Inicio",
+                    "item": "https://tudominio.com"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Página no encontrada",
+                    "item": "https://tudominio.com/404.html"
+                }
+            ]
+        }
+    }
+    </script>
+
+    <!-- Estilos -->
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --background-color: #f5f6fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .error-container {
+            text-align: center;
+            max-width: 600px;
+            padding: 40px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .error-code {
+            font-size: 120px;
+            font-weight: bold;
+            color: var(--accent-color);
+            line-height: 1;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .error-message {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+
+        .error-description {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .navigation-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.home {
+            background-color: var(--primary-color);
+        }
+
+        .nav-link.home:hover {
+            background-color: var(--accent-color);
+        }
+
+        .countdown {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        @media (max-width: 480px) {
+            .error-code {
+                font-size: 80px;
+            }
+
+            .error-message {
+                font-size: 20px;
+            }
+
+            .navigation-links {
+                flex-direction: column;
+            }
+
+            .nav-link {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+
+    <!-- Redirección automática -->
+    <script>
+        // Redirección automática después de 10 segundos
+        let timeLeft = 10;
+        const countdownElement = document.createElement('div');
+        countdownElement.className = 'countdown';
+        document.body.appendChild(countdownElement);
+
+        const countdown = setInterval(() => {
+            timeLeft--;
+            countdownElement.textContent = `Serás redirigido a la página principal en ${timeLeft} segundos...`;
+            
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                window.location.href = './index.html';
+            }
+        }, 1000);
+
+        // Detener la redirección si el usuario interactúa con la página
+        document.addEventListener('click', () => {
+            clearInterval(countdown);
+            countdownElement.style.display = 'none';
+        });
+    </script>
+</head>
+<body>
+    <div class="error-container" itemscope itemtype="https://schema.org/WebPage">
+        <h1 class="error-code" itemprop="name">404</h1>
+        <h2 class="error-message">¡Ups! Página no encontrada</h2>
+        <p class="error-description" itemprop="description">
+            Lo sentimos, la página que estás buscando no existe o ha sido movida.
+            Puedes regresar a la página principal o explorar otras secciones de nuestro sitio.
+        </p>
+        
+        <nav class="navigation-links" itemscope itemtype="https://schema.org/SiteNavigationElement">
+            <a href="./index.html" class="nav-link home" itemprop="url">
+                <span itemprop="name">Volver al Inicio</span>
+            </a>
+            <a href="./blog/index.html" class="nav-link" itemprop="url">
+                <span itemprop="name">Ir al Blog</span>
+            </a>
+            <a href="./catalogo/index.html" class="nav-link" itemprop="url">
+                <span itemprop="name">Ver Catálogo</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Script para mejorar la experiencia de usuario -->
+    <script>
+        // Prevenir que el usuario se quede atrapado en la página 404
+        if (window.history && window.history.pushState) {
+            window.history.pushState('forward', null, './#forward');
+            window.onpopstate = function() {
+                window.history.pushState('forward', null, './#forward');
+            };
+        }
+
+        // Registrar el error 404 para análisis
+        if (typeof gtag !== 'undefined') {
+            gtag('event', '404_error', {
+                'event_category': 'Error',
+                'event_label': window.location.pathname
+            });
+        }
+    </script>
+</body>
+</html> 

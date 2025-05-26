@@ -1,0 +1,91 @@
+{
+    "products": [
+        {
+            "id": "p001",
+            "name": "Bleu de Chanel",
+            "brand": "Chanel",
+            "description": "Una fragancia amaderada y aromática que combina notas cítricas con especias y maderas preciosas.",
+            "price": {
+                "amount": 299900,
+                "currency": "COP"
+            },
+            "images": {
+                "main": "chanel_principal.webp",
+                "gallery": [
+                    "chanel1.webp",
+                    "chanel2.webp",
+                    "chanel3.webp",
+                    "chanel4.webp"
+                ]
+            },
+            "categories": ["hombre"],
+            "notes": {
+                "top": ["Cítricos", "Menta", "Pimienta"],
+                "middle": ["Jengibre", "Nuez moscada", "Jazmín"],
+                "base": ["Sándalo", "Vetiver", "Ámbar"]
+            },
+            "storeLinks": {
+                "sephora": "https://www.sephora.com/bleu-de-chanel",
+                "amazon": "https://www.amazon.com/bleu-de-chanel"
+            }
+        },
+        {
+            "id": "p002",
+            "name": "Black Opium",
+            "brand": "Yves Saint Laurent",
+            "description": "Una fragancia adictiva que combina café con flores blancas y vainilla.",
+            "price": {
+                "amount": 259900,
+                "currency": "COP"
+            },
+            "images": {
+                "main": "opium_principal.webp",
+                "gallery": [
+                    "opium1.webp",
+                    "opium2.webp",
+                    "opium3.webp",
+                    "opium4.webp"
+                ]
+            },
+            "categories": ["mujer"],
+            "notes": {
+                "top": ["Café", "Rosa", "Pimienta"],
+                "middle": ["Jazmín", "Flor de naranjo", "Almizcle"],
+                "base": ["Vainilla", "Pachulí", "Caramelo"]
+            },
+            "storeLinks": {
+                "sephora": "https://www.sephora.com/black-opium",
+                "amazon": "https://www.amazon.com/black-opium"
+            }
+        },
+        {
+            "id": "p003",
+            "name": "Acqua di Gio",
+            "brand": "Giorgio Armani",
+            "description": "Una fragancia acuática y fresca inspirada en el mar Mediterráneo.",
+            "price": {
+                "amount": 199900,
+                "currency": "COP"
+            },
+            "images": {
+                "main": "gio_principal.webp",
+                "gallery": [
+                    "gio1.webp",
+                    "gio2.webp",
+                    "gio3.webp",
+                    "gio4.webp"
+                ]
+            },
+            "categories": ["hombre", "unisex"],
+            "notes": {
+                "top": ["Limón", "Neroli", "Bergamota"],
+                "middle": ["Jazmín", "Rosa", "Salvia"],
+                "base": ["Ámbar", "Pachulí", "Musk"]
+            },
+            "storeLinks": {
+                "sephora": "https://www.sephora.com/acqua-di-gio",
+                "amazon": "https://www.amazon.com/acqua-di-gio"
+            }
+        }
+    ]
+} 

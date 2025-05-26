@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo del icono -->
+  <rect width="24" height="24" rx="4" fill="#000000"/>
+  
+  <!-- Letra S estilizada -->
+  <path d="M7 6C7 6 9 7 12 7C15 7 17 6 17 6V7C17 7 15 8 12 8C9 8 7 7 7 7V6Z" fill="#FFFFFF"/>
+  <path d="M7 9C7 9 9 10 12 10C15 10 17 9 17 9V10C17 10 15 11 12 11C9 11 7 10 7 10V9Z" fill="#FFFFFF"/>
+  <path d="M7 12C7 12 9 13 12 13C15 13 17 12 17 12V13C17 13 15 14 12 14C9 14 7 13 7 13V12Z" fill="#FFFFFF"/>
+  <path d="M7 15C7 15 9 16 12 16C15 16 17 15 17 15V16C17 16 15 17 12 17C9 17 7 16 7 16V15Z" fill="#FFFFFF"/>
+  
+  <!-- Punto decorativo -->
+  <circle cx="12" cy="19" r="1" fill="#FFFFFF"/>
+</svg> 

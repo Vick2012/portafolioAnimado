@@ -1,0 +1,48 @@
+{
+    "name": "Esencia Pura - Catálogo de Perfumes de Lujo",
+    "short_name": "Esencia Pura",
+    "description": "Catálogo exclusivo de perfumes de lujo",
+    "start_url": "/catalogo/",
+    "display": "standalone",
+    "background_color": "#18141a",
+    "theme_color": "#18141a",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/assets/images/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/assets/images/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Ver Catálogo",
+            "url": "/catalogo/",
+            "description": "Explora nuestra colección de perfumes"
+        }
+    ],
+    "categories": ["shopping", "lifestyle"],
+    "screenshots": [
+        {
+            "src": "/assets/images/screenshots/catalogo-desktop.webp",
+            "sizes": "1920x1080",
+            "type": "image/webp",
+            "platform": "wide",
+            "label": "Catálogo de Perfumes en Desktop"
+        },
+        {
+            "src": "/assets/images/screenshots/catalogo-mobile.webp",
+            "sizes": "750x1334",
+            "type": "image/webp",
+            "platform": "narrow",
+            "label": "Catálogo de Perfumes en Móvil"
+        }
+    ]
+} 

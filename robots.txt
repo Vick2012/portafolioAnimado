@@ -1,0 +1,21 @@
+# robots.txt para Esencia Pura - Catálogo de Perfumes
+User-agent: *
+Allow: /
+Allow: /catalogo/
+Allow: /assets/images/
+Allow: /assets/css/
+Allow: /assets/js/
+
+# No permitir acceso a archivos de sistema y configuración
+Disallow: /build/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.env
+Disallow: /package.json
+Disallow: /package-lock.json
+
+# Sitemap
+Sitemap: https://tudominio.com/sitemap.xml
+
+# Crawl-delay para evitar sobrecarga
+Crawl-delay: 10

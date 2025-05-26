@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
+                            http://www.google.com/schemas/sitemap-image/1.1
+                            http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd">
+
+    <!-- Página Principal -->
+    <url>
+        <loc>https://tudominio.com/</loc>
+        <lastmod>2024-03-20</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://tudominio.com/assets/images/perfumes/principal.webp</image:loc>
+            <image:title>Esencia Pura - Catálogo de Perfumes de Lujo</image:title>
+        </image:image>
+    </url>
+
+    <!-- Catálogo de Perfumes -->
+    <url>
+        <loc>https://tudominio.com/catalogo/</loc>
+        <lastmod>2024-03-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://tudominio.com/assets/images/perfumes/cristal.webp</image:loc>
+            <image:title>Catálogo Exclusivo de Perfumes</image:title>
+        </image:image>
+    </url>
+
+    <!-- Categorías -->
+    <url>
+        <loc>https://tudominio.com/catalogo/#mujer</loc>
+        <lastmod>2024-03-20</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://tudominio.com/catalogo/#hombre</loc>
+        <lastmod>2024-03-20</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://tudominio.com/catalogo/#unisex</loc>
+        <lastmod>2024-03-20</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Recursos Estáticos Importantes -->
+    <url>
+        <loc>https://tudominio.com/assets/css/catalogo.css</loc>
+        <lastmod>2024-03-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://tudominio.com/assets/js/catalogo.js</loc>
+        <lastmod>2024-03-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <!-- Imágenes Principales -->
+    <url>
+        <loc>https://tudominio.com/assets/images/perfumes/principal.webp</loc>
+        <lastmod>2024-03-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://tudominio.com/assets/images/perfumes/principal.webp</image:loc>
+            <image:title>Perfume Destacado - Esencia Pura</image:title>
+            <image:caption>Imagen principal del catálogo de perfumes de lujo</image:caption>
+        </image:image>
+    </url>
+
+    <!-- Página de Contacto -->
+    <url>
+        <loc>https://tudominio.com/contacto</loc>
+        <lastmod>2024-03-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+</urlset>
+
