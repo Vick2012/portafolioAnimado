@@ -32,7 +32,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
   </noscript>
   <!-- Preload de la fuente Poppins WOFF2 para mejorar LCP -->
-  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/poppins/v23/pxiByp8kv8JHgFVrLDz8Z1xlEA.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/poppins/v23/pxiByp8kv8JHgFVrLDz8Z1xlEA.woff2"
+    type="font/woff2" crossorigin>
 
   <!-- Preconexión con dominios de fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,8 +44,16 @@
 
   <!-- Script para aplicar tema claro u oscuro antes de pintar -->
   <script>
-    const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    if (theme === 'light') document.documentElement.classList.replace('dark-theme', 'light-theme');
+    (function() {
+      var theme = localStorage.getItem('theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.classList.remove('light-theme');
+      } else {
+        document.documentElement.classList.add('light-theme');
+        document.documentElement.classList.remove('dark-theme');
+      }
+    })();
   </script>
 
   <!-- Schema.org markup para WebSite -->
@@ -120,26 +129,27 @@
   }
   </script>
 
-  <!-- Google Tag Manager y Google Analytics 4 diferidos para mejorar LCP/FCP -->
+  <!-- Google Tag Manager y Google Analytics 4 diferidos tras interacción para mejorar LCP/FCP -->
   <script>
-    window.addEventListener('DOMContentLoaded', function() {
+    function loadTrackingScripts() {
       // Google Tag Manager
-      (function(w,d,s,l,i){
-        w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
-        var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
-        j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-        f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-WZL5KCS2');
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-WZL5KCS2');
 
       // Google Analytics 4
       var ga = document.createElement('script');
       ga.async = true;
       ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
       document.head.appendChild(ga);
-      ga.onload = function() {
+      ga.onload = function () {
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-XXXXXXXXXX', {
           'page_title': 'Portafolio - Victor Alarcón',
@@ -148,6 +158,16 @@
           'send_page_view': true
         });
       }
+    }
+    // Cargar tras la primera interacción del usuario
+    ["scroll", "keydown", "mousemove", "touchstart", "click"].forEach(function (evt) {
+      window.addEventListener(evt, function handler() {
+        window.removeEventListener(evt, handler, true);
+        if (!window.__trackingLoaded) {
+          window.__trackingLoaded = true;
+          loadTrackingScripts();
+        }
+      }, true);
     });
   </script>
 </head>
@@ -155,7 +175,8 @@
 <body>
   <div id="tsparticles"></div>
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZL5KCS2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZL5KCS2" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
   <button id="theme-toggle" class="theme-button" aria-label="Cambiar tema">🌙 Dark Mode</button>
   <header>
@@ -209,7 +230,8 @@
           <div class="top-bar">
             <div class="portfolio-title-block">
               <h1 class="portfolio-label">PORTAFOLIO</h1>
-              <p class="portfolio-subtitle" itemprop="jobTitle">Ingeniero de Software | Apasionado por la tecnología y por los desafíos.</p>
+              <p class="portfolio-subtitle" itemprop="jobTitle">Ingeniero de Software | Apasionado por la tecnología y
+                por los desafíos.</p>
               <meta itemprop="name" content="Victor Alarcón">
               <meta itemprop="url" content="https://tudominio.com">
               <meta itemprop="image" content="https://tudominio.com/images/me.webp">
@@ -221,7 +243,7 @@
               <ul class="nav-links">
                 <li><a href="index.html" class="active">Inicio</a></li>
                 <li><a href="blog/index.html" id="blog-link">Blog</a></li>
-                <li><a href="catalogo/index.html">Catálogo</a></li>
+                <li><a href="catalogo/index.html" id="catalogo-link">Catálogo</a></li>
               </ul>
             </nav>
             <div class="contact-info">
@@ -273,7 +295,10 @@
           </div>
           <div class="floating-circles">
             <div class="circle circle-main">
-              <img src="images/perfil.webp" width="300" height="300" alt="Foto de Víctor Alarcón" fetchpriority="high" loading="eager" decoding="async" style="width:300px;height:300px;display:block;" />
+              <picture>
+                <source srcset="images/perfil_optimizada.webp" type="image/webp" media="(max-width: 600px)">
+                <img src="images/perfil.webp" width="300" height="300" alt="Foto de Víctor Alarcón" fetchpriority="high" loading="eager" style="width:300px;height:300px;display:block;" />
+              </picture>
             </div>
             <div class="circle circle-back-1"></div>
             <div class="circle circle-back-2"></div>
@@ -286,14 +311,15 @@
         <div class="banners-redirect">
           <div class="portfolio-banner">
             <a href="https://portafolisw.netlify.app/?utm_source=victor&utm_medium=banner&utm_campaign=portafolio&utm_id=banner-1"
-              target="_blank">
+              target="_blank" data-banner="santiago">
               <h2>Visita el Portafolio de Santiago Castro González</h2>
               <p>Descubre mis proyectos en Ingeniería de Software y Desarrollo Web.</p>
             </a>
           </div>
+
           <div class="portfolio-banner">
-            <a href="https://samuelortizospina.me/?utm_source=santiago&utm_medium=banner&utm_campaign=portafolio+web&utm_id=banner-1"
-              target="_blank">
+            <a href="https://samuelortizospina.me/?utm_source=santiago&utm_medium=banner&utm_campaign=portafolio+web&utm_id=banner-2"
+              target="_blank" data-banner="samuel">
               <h2>Visita el Portafolio de Samuel Ortiz Ospina</h2>
               <p>Ingeniero de Software | Especialista en Backend & Análisis de Datos</p>
             </a>
@@ -304,7 +330,8 @@
     <section id="slide-1" class="slide" aria-label="Sobre mí" itemscope itemtype="https://schema.org/AboutPage">
       <div class="about-container">
         <div class="about-image">
-          <img src="images/me.webp" alt="Foto profesional de Victor Alarcón" loading="lazy" width="400" height="400" itemprop="image" />
+          <img src="images/me.webp" alt="Foto profesional de Victor Alarcón" loading="lazy" width="400" height="400"
+            itemprop="image" />
         </div>
         <div class="about-text">
           <h2 class="about-title">About Me</h2>
@@ -341,7 +368,8 @@
         </div>
       </div>
     </section>
-    <section id="slide-2" class="slide" aria-label="Background y habilidades" itemscope itemtype="https://schema.org/ItemList">
+    <section id="slide-2" class="slide" aria-label="Background y habilidades" itemscope
+      itemtype="https://schema.org/ItemList">
       <h2 class="background-title">Background</h2>
       <div class="background-grid">
         <div class="background-column" itemscope itemtype="https://schema.org/ItemList">
@@ -385,14 +413,16 @@
       </div>
 
       <div class="background-image">
-        <img src="images/background.webp" alt="Imagen de fondo con laptop" loading="lazy" width="600" height="400" itemprop="image" />
+        <img src="images/background.webp" alt="Imagen de fondo con laptop" loading="lazy" width="600" height="400"
+          itemprop="image" />
       </div>
     </section>
 
     <section id="slide-3" class="slide" aria-label="Proyectos" itemscope itemtype="https://schema.org/ItemList">
       <div class="project-card-layout">
         <div class="project-image">
-          <img src="images/project.webp" alt="Imagen de aplicación móvil de inventario" loading="lazy" width="600" height="400" />
+          <img src="images/project.webp" alt="Imagen de aplicación móvil de inventario" loading="lazy" width="600"
+            height="400" />
         </div>
 
         <div class="project-cards">
@@ -407,7 +437,8 @@
             <p><strong>Lenguajes:</strong> <span itemprop="programmingLanguage">React, Node.js, MongoDB</span></p>
             <meta itemprop="operatingSystem" content="Web">
             <meta itemprop="browserRequirements" content="Requires JavaScript. Requires HTML5.">
-            <a href="https://github.com/Vick2012/ERP-pc.git" itemprop="downloadUrl" target="_blank">Ver ERP en GitHub</a>
+            <a href="https://github.com/Vick2012/ERP-pc.git" itemprop="downloadUrl" target="_blank">Ver ERP en
+              GitHub</a>
           </div>
 
           <div class="card" itemscope itemtype="https://schema.org/SoftwareApplication">
@@ -425,7 +456,8 @@
             <p itemprop="description">Sitio web personal para mostrar mis proyectos y habilidades.</p>
             <p><strong>Tecnologías:</strong> <span itemprop="programmingLanguage">Python, Reflex, HTML5, CSS, JS,
                 Node.js (SASS)</span></p>
-            <a href="https://github.com/Vick2012/Portafolio.git" itemprop="downloadUrl" target="_blank">Ver Portafolio en
+            <a href="https://github.com/Vick2012/Portafolio.git" itemprop="downloadUrl" target="_blank">Ver Portafolio
+              en
               GitHub</a>
           </div>
         </div>
@@ -493,7 +525,7 @@
   </script>
   <!-- Scripts optimizados -->
   <script src="assets/js/main.js" defer></script>
-  <script src="assets/js/carrusel.js" defer></script>
+  <!-- <script src="assets/js/carrusel.js" defer></script> -->
   <script>
     // Carga condicional y diferida de tsParticles y particles.js
     function loadParticles() {
@@ -501,7 +533,7 @@
         var script = document.createElement('script');
         script.src = 'https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js';
         script.async = true;
-        script.onload = function() {
+        script.onload = function () {
           var particlesScript = document.createElement('script');
           particlesScript.src = 'assets/js/particles.js';
           particlesScript.defer = true;
@@ -510,27 +542,38 @@
         document.body.appendChild(script);
       }
     }
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(loadParticles);
-    } else {
-      window.addEventListener('DOMContentLoaded', loadParticles);
+    // Cargar tras interacción o tras 2 segundos
+    let particlesLoaded = false;
+    function triggerParticlesLoad() {
+      if (!particlesLoaded) {
+        particlesLoaded = true;
+        loadParticles();
+      }
     }
+    ["scroll", "keydown", "mousemove", "touchstart", "click"].forEach(function (evt) {
+      window.addEventListener(evt, triggerParticlesLoad, { once: true, passive: true });
+    });
+    setTimeout(triggerParticlesLoad, 2000);
   </script>
   <style>
     /* Reservar espacio para el carousel y evitar CLS */
     #carousel {
       min-height: 700px;
     }
+
     .circle-main img {
       display: block;
       width: 300px;
       height: 300px;
     }
+
     .about-image img {
       width: 400px;
       height: 400px;
     }
-    .background-image img, .project-image img {
+
+    .background-image img,
+    .project-image img {
       width: 600px;
       height: 400px;
     }
