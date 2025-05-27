@@ -201,12 +201,16 @@
       ],
       "alumniOf": {
           "@type": "CollegeOrUniversity",
-          "name": "Universidad Manuela Beltrán",
-          "educationalCredentialAwarded": {
-              "@type": "EducationalOccupationalCredential",
-              "credentialCategory": "degree",
-              "educationalLevel": "Bachelor",
-              "name": "Ingeniería de Software"
+          "name": "Universidad Manuela Beltrán"
+      },
+      "educationalCredentialAwarded": {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "degree",
+          "educationalLevel": "Bachelor",
+          "name": "Ingeniería de Software",
+          "educationalCredentialAwardedBy": {
+              "@type": "CollegeOrUniversity",
+              "name": "Universidad Manuela Beltrán"
           }
       },
       "hasCredential": [
@@ -508,10 +512,10 @@
         </div>
       </div>
     </section>
-    <section id="slide-2" class="slide" aria-label="Background y habilidades" itemscope
-      itemtype="https://schema.org/ItemList">
+    <section id="slide-2" class="slide" aria-label="Background y habilidades" itemscope itemtype="https://schema.org/ItemList">
       <h2 class="background-title">Background</h2>
-      <div class="background-grid">
+      <div class="background-grid" itemscope itemtype="https://schema.org/Person">
+        <meta itemprop="name" content="Victor Alarcón">
         <div class="background-column" itemscope itemtype="https://schema.org/ItemList">
           <h3>CERTIFICATIONS</h3>
           <ul>
@@ -535,25 +539,52 @@
         <div class="background-column">
           <h3>PROGRAMMING LANGUAGES</h3>
           <ul>
-            <li itemprop="knowsAbout">Java</li>
-            <li itemprop="knowsAbout">Python</li>
-            <li itemprop="knowsAbout">C#</li>
-            <li itemprop="knowsAbout">JavaScript (Node.js)</li>
+            <li>
+              <meta itemprop="knowsAbout" content="Java">
+              <span>Java</span>
+            </li>
+            <li>
+              <meta itemprop="knowsAbout" content="Python">
+              <span>Python</span>
+            </li>
+            <li>
+              <meta itemprop="knowsAbout" content="C#">
+              <span>C#</span>
+            </li>
+            <li>
+              <meta itemprop="knowsAbout" content="JavaScript (Node.js)">
+              <span>JavaScript (Node.js)</span>
+            </li>
           </ul>
         </div>
         <div class="background-column">
           <h3>DATABASE TECHNOLOGIES</h3>
           <ul>
-            <li itemprop="knowsAbout">MySQL</li>
-            <li itemprop="knowsAbout">MongoDB</li>
-            <li itemprop="knowsAbout">PostgreSQL</li>
+            <li>
+              <meta itemprop="knowsAbout" content="MySQL">
+              <span>MySQL</span>
+            </li>
+            <li>
+              <meta itemprop="knowsAbout" content="MongoDB">
+              <span>MongoDB</span>
+            </li>
+            <li>
+              <meta itemprop="knowsAbout" content="PostgreSQL">
+              <span>PostgreSQL</span>
+            </li>
           </ul>
         </div>
         <div class="background-column">
           <h3>CLOUD SERVICES</h3>
           <ul>
-            <li itemprop="knowsAbout">Amazon Web Services</li>
-            <li itemprop="knowsAbout">Microsoft Azure</li>
+            <li>
+              <meta itemprop="knowsAbout" content="Amazon Web Services">
+              <span>Amazon Web Services</span>
+            </li>
+            <li>
+              <meta itemprop="knowsAbout" content="Microsoft Azure">
+              <span>Microsoft Azure</span>
+            </li>
           </ul>
         </div>
       </div>
