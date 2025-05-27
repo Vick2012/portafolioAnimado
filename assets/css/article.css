@@ -499,4 +499,9 @@ body.bg-wave {
     align-items: flex-start;
     gap: 0.7rem;
   }
+}
+
+/* Reforzar tamaño de fuente para h1 en todos los contextos relevantes */
+h1, section h1, article h1, aside h1, nav h1, main h1, header h1, footer h1 {
+  font-size: 2.5rem;
 } 

@@ -15,7 +15,7 @@ Disallow: /package.json
 Disallow: /package-lock.json
 
 # Sitemap
-Sitemap: https://tudominio.com/sitemap.xml
+Sitemap: https://victoralarcon.netlify.app/sitemap.xml
 
 # Crawl-delay para evitar sobrecarga
 Crawl-delay: 10

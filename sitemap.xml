@@ -9,7 +9,7 @@
 
     <!-- Página Principal -->
     <url>
-        <loc>https://tudominio.com/</loc>
+        <loc>https://victoralarcon.netlify.app/</loc>
         <lastmod>2024-03-20</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
@@ -21,7 +21,7 @@
 
     <!-- Catálogo de Perfumes -->
     <url>
-        <loc>https://tudominio.com/catalogo/</loc>
+        <loc>https://victoralarcon.netlify.app/catalogo/</loc>
         <lastmod>2024-03-20</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
@@ -33,19 +33,19 @@
 
     <!-- Categorías -->
     <url>
-        <loc>https://tudominio.com/catalogo/#mujer</loc>
+        <loc>https://victoralarcon.netlify.app/catalogo/#mujer</loc>
         <lastmod>2024-03-20</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://tudominio.com/catalogo/#hombre</loc>
+        <loc>https://victoralarcon.netlify.app/catalogo/#hombre</loc>
         <lastmod>2024-03-20</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://tudominio.com/catalogo/#unisex</loc>
+        <loc>https://victoralarcon.netlify.app/catalogo/#unisex</loc>
         <lastmod>2024-03-20</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -53,13 +53,13 @@
 
     <!-- Recursos Estáticos Importantes -->
     <url>
-        <loc>https://tudominio.com/assets/css/catalogo.css</loc>
+        <loc>https://victoralarcon.netlify.app/assets/css/catalogo.css</loc>
         <lastmod>2024-03-20</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://tudominio.com/assets/js/catalogo.js</loc>
+        <loc>https://victoralarcon.netlify.app/assets/js/catalogo.js</loc>
         <lastmod>2024-03-20</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
@@ -67,7 +67,7 @@
 
     <!-- Imágenes Principales -->
     <url>
-        <loc>https://tudominio.com/assets/images/perfumes/principal.webp</loc>
+        <loc>https://victoralarcon.netlify.app/assets/images/perfumes/principal.webp</loc>
         <lastmod>2024-03-20</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -80,10 +80,16 @@
 
     <!-- Página de Contacto -->
     <url>
-        <loc>https://tudominio.com/contacto</loc>
+        <loc>https://victoralarcon.netlify.app/contacto</loc>
         <lastmod>2024-03-20</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
+    </url>
+
+    <!-- Blog -->
+    <url>
+        <loc>https://victoralarcon.netlify.app/blog/</loc>
+        <priority>0.8</priority>
     </url>
 
 </urlset>
