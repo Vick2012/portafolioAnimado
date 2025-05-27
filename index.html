@@ -642,47 +642,6 @@
   <!-- Scripts optimizados -->
   <script src="assets/js/main.js" defer></script>
   <!-- <script src="assets/js/carrusel.js" defer></script> -->
-  <script>
-    // Carga condicional y diferida de tsParticles y particles.js solo si #tsparticles es visible
-    function loadParticles() {
-      if (document.getElementById('tsparticles')) {
-        var script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js';
-        script.async = true;
-        script.onload = function () {
-          var particlesScript = document.createElement('script');
-          particlesScript.src = 'assets/js/particles.js';
-          particlesScript.defer = true;
-          document.body.appendChild(particlesScript);
-        };
-        document.body.appendChild(script);
-      }
-    }
-    // Usar IntersectionObserver para cargar solo si el usuario ve el fondo animado
-    let particlesLoaded = false;
-    function triggerParticlesLoad() {
-      if (!particlesLoaded) {
-        particlesLoaded = true;
-        loadParticles();
-      }
-    }
-    if ('IntersectionObserver' in window) {
-      var observer = new IntersectionObserver(function(entries) {
-        if (entries[0].isIntersecting) {
-          triggerParticlesLoad();
-          observer.disconnect();
-        }
-      }, { threshold: 0.1 });
-      var target = document.getElementById('tsparticles');
-      if (target) observer.observe(target);
-    } else {
-      // Fallback: cargar tras interacción o 2 segundos
-      ["scroll", "keydown", "mousemove", "touchstart", "click"].forEach(function (evt) {
-        window.addEventListener(evt, triggerParticlesLoad, { once: true, passive: true });
-      });
-      setTimeout(triggerParticlesLoad, 2000);
-    }
-  </script>
   <style>
     /* Reservar espacio para el carousel y evitar CLS */
     #carousel {
