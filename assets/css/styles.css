@@ -290,6 +290,7 @@ body {
   display: flex;
   gap: 50rem;   /* Distancia entre Botones*/
   z-index: 100;
+  min-height: 70px;
 }
 
 .nav-buttons button {
@@ -304,6 +305,7 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   will-change: transform;
+  min-width: 150px;
 }
 
 .nav-buttons button:hover {
@@ -1000,6 +1002,7 @@ body.light-theme .slide {
   width: 100%;
   transition: box-shadow 0.3s, border 0.3s;
   position: relative;
+  min-height: 110px;
 }
 
 .portfolio-banner h2 {
