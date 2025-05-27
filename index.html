@@ -23,7 +23,7 @@
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 
   <!-- Preload imagen principal optimizada -->
-  <link rel="preload" as="image" href="images/perfil_optimizada.webp" type="image/webp">
+  <link rel="preload" as="image" href="images/perfil.webp" type="image/webp">
 
   <!-- Preload y carga no bloqueante de Google Fonts -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" as="style"
@@ -174,6 +174,37 @@
   <style>
     h1, section h1, article h1, aside h1, nav h1, main h1, header h1, footer h1 {
       font-size: 2.5rem;
+    }
+    .floating-circles {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      min-height: 300px;
+      margin-left: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .circle-main {
+      width: 300px;
+      height: 300px;
+      position: relative;
+      z-index: 10;
+      background: linear-gradient(to bottom, rgba(0, 255, 213, 0) 0%, rgba(0, 255, 213, 0.5) 170%, rgb(0, 255, 213) 100%);
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .circle-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+      aspect-ratio: 1/1;
+      transition: none !important;
     }
   </style>
 </head>
@@ -533,7 +564,7 @@
   <script src="assets/js/main.js" defer></script>
   <!-- <script src="assets/js/carrusel.js" defer></script> -->
   <script>
-    // Carga condicional y diferida de tsParticles y particles.js
+    // Carga condicional y diferida de tsParticles y particles.js solo si #tsparticles es visible
     function loadParticles() {
       if (document.getElementById('tsparticles')) {
         var script = document.createElement('script');
@@ -548,7 +579,7 @@
         document.body.appendChild(script);
       }
     }
-    // Cargar tras interacción o tras 2 segundos
+    // Usar IntersectionObserver para cargar solo si el usuario ve el fondo animado
     let particlesLoaded = false;
     function triggerParticlesLoad() {
       if (!particlesLoaded) {
@@ -556,10 +587,22 @@
         loadParticles();
       }
     }
-    ["scroll", "keydown", "mousemove", "touchstart", "click"].forEach(function (evt) {
-      window.addEventListener(evt, triggerParticlesLoad, { once: true, passive: true });
-    });
-    setTimeout(triggerParticlesLoad, 2000);
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting) {
+          triggerParticlesLoad();
+          observer.disconnect();
+        }
+      }, { threshold: 0.1 });
+      var target = document.getElementById('tsparticles');
+      if (target) observer.observe(target);
+    } else {
+      // Fallback: cargar tras interacción o 2 segundos
+      ["scroll", "keydown", "mousemove", "touchstart", "click"].forEach(function (evt) {
+        window.addEventListener(evt, triggerParticlesLoad, { once: true, passive: true });
+      });
+      setTimeout(triggerParticlesLoad, 2000);
+    }
   </script>
   <style>
     /* Reservar espacio para el carousel y evitar CLS */

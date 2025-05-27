@@ -402,13 +402,13 @@
     <!-- Scripts optimizados -->
     <script src="../assets/js/catalogo.js" defer></script>
     <script>
-      // Carga condicional y diferida de tsParticles y particles.js
+      // Carga condicional y diferida de tsParticles y particles.js solo si #tsparticles es visible
       function loadParticles() {
         if (document.getElementById('tsparticles')) {
           var script = document.createElement('script');
           script.src = 'https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js';
           script.async = true;
-          script.onload = function() {
+          script.onload = function () {
             var particlesScript = document.createElement('script');
             particlesScript.src = '../assets/js/particles.js';
             particlesScript.defer = true;
@@ -417,13 +417,70 @@
           document.body.appendChild(script);
         }
       }
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(loadParticles);
+      // Usar IntersectionObserver para cargar solo si el usuario ve el fondo animado
+      let particlesLoaded = false;
+      function triggerParticlesLoad() {
+        if (!particlesLoaded) {
+          particlesLoaded = true;
+          loadParticles();
+        }
+      }
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          if (entries[0].isIntersecting) {
+            triggerParticlesLoad();
+            observer.disconnect();
+          }
+        }, { threshold: 0.1 });
+        var target = document.getElementById('tsparticles');
+        if (target) observer.observe(target);
       } else {
-        window.addEventListener('DOMContentLoaded', loadParticles);
+        // Fallback: cargar tras interacción o 2 segundos
+        ["scroll", "keydown", "mousemove", "touchstart", "click"].forEach(function (evt) {
+          window.addEventListener(evt, triggerParticlesLoad, { once: true, passive: true });
+        });
+        setTimeout(triggerParticlesLoad, 2000);
       }
     </script>
-    
+    <!-- Google Tag Manager y Analytics diferidos tras interacción -->
+    <script>
+      function loadTrackingScripts() {
+        // Google Tag Manager
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+          j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WZL5KCS2');
+        // Google Analytics 4
+        var ga = document.createElement('script');
+        ga.async = true;
+        ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+        document.head.appendChild(ga);
+        ga.onload = function () {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { dataLayer.push(arguments); }
+          gtag('js', new Date());
+          gtag('config', 'G-XXXXXXXXXX', {
+            'page_title': 'Catálogo de Perfumes - Victor Alarcón',
+            'page_location': window.location.href,
+            'page_path': window.location.pathname,
+            'send_page_view': true
+          });
+        }
+      }
+      ["scroll", "keydown", "mousemove", "touchstart", "click"].forEach(function (evt) {
+        window.addEventListener(evt, function handler() {
+          window.removeEventListener(evt, handler, true);
+          if (!window.__trackingLoaded) {
+            window.__trackingLoaded = true;
+            loadTrackingScripts();
+          }
+        }, true);
+      });
+    </script>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZL5KCS2"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

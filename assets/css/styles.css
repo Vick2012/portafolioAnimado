@@ -288,7 +288,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 85rem; /* Distancia entre Botones*/
+  gap: 50rem;   /* Distancia entre Botones*/
   z-index: 100;
 }
 
