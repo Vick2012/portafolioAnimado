@@ -16,6 +16,8 @@
 
 html, body {
   min-height: 100vh;
+  overflow-x: hidden;
+  background: #0a0a33;
 }
 
 body {
@@ -1306,4 +1308,23 @@ h2.name {
   color: #fff;
   text-shadow: none;
   filter: none;
+}
+
+#carousel, .slide {
+  min-height: 700px;
+  aspect-ratio: 9/16;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  #carousel, .slide {
+    min-height: 420px;
+    aspect-ratio: 9/16;
+  }
+}
+@media (max-width: 600px) {
+  #carousel, .slide {
+    min-height: 320px;
+    aspect-ratio: 9/19;
+  }
 }
