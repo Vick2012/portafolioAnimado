@@ -37,6 +37,8 @@ body {
 }
 
 #slide-0 {
+  min-height: 700px;
+  aspect-ratio: 16/9;
   height: 100vh;
   width: 100%;
   position: relative;
@@ -968,6 +970,7 @@ body.light-theme .slide {
 }
 
 .banners-redirect {
+  min-height: 240px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
