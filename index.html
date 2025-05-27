@@ -199,20 +199,34 @@
           "AWS",
           "Azure"
       ],
-      "hasCredential": [
-          {
-              "@type": "EducationalCredential",
+      "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Universidad Manuela Beltrán",
+          "educationalCredentialAwarded": {
+              "@type": "EducationalOccupationalCredential",
               "credentialCategory": "degree",
               "educationalLevel": "Bachelor",
               "name": "Ingeniería de Software"
+          }
+      },
+      "hasCredential": [
+          {
+              "@type": "EducationalOccupationalCredential",
+              "credentialCategory": "license",
+              "name": "AWS Certified Developer",
+              "recognizedBy": {
+                  "@type": "Organization",
+                  "name": "Amazon Web Services"
+              }
           },
           {
-              "@type": "EducationalCredential",
-              "name": "AWS Certified Developer"
-          },
-          {
-              "@type": "EducationalCredential",
-              "name": "Scrum Master Certification"
+              "@type": "EducationalOccupationalCredential",
+              "credentialCategory": "certification",
+              "name": "Scrum Master Certification",
+              "recognizedBy": {
+                  "@type": "Organization",
+                  "name": "Scrum Alliance"
+              }
           }
       ]
   }
@@ -452,26 +466,43 @@
             aportando valor a la construccion de los proyectos.
           </p>
 
-          <div class="experience-list">
+          <div class="experience-list" itemscope itemtype="https://schema.org/Person">
+            <meta itemprop="name" content="Victor Alarcón">
+            <meta itemprop="jobTitle" content="Software Engineer">
             <div class="experience-item">
-              <strong class="position" itemprop="jobTitle">SOFTWARE ENGINEER</strong>
-              <div class="company" itemprop="affiliation">Universidad Manuela Beltrán (2022 - 2026)</div>
+              <strong class="position">SOFTWARE ENGINEER</strong>
+              <div class="company">
+                <meta itemprop="worksFor" content="Universidad Manuela Beltrán">
+                <span>Universidad Manuela Beltrán (2022 - 2026)</span>
+              </div>
             </div>
             <div class="experience-item">
-              <strong class="position" itemprop="jobTitle">SENIOR SOFTWARE DEVELOPER</strong>
-              <div class="company" itemprop="affiliation">CodeCraft Solutions (20XX–20XX)</div>
+              <strong class="position">SENIOR SOFTWARE DEVELOPER</strong>
+              <div class="company">
+                <meta itemprop="worksFor" content="CodeCraft Solutions">
+                <span>CodeCraft Solutions (20XX–20XX)</span>
+              </div>
             </div>
             <div class="experience-item">
-              <strong class="position" itemprop="jobTitle">LEAD SOFTWARE DEVELOPER</strong>
-              <div class="company" itemprop="affiliation">InnovateTech Labs (20XX–20XX)</div>
+              <strong class="position">LEAD SOFTWARE DEVELOPER</strong>
+              <div class="company">
+                <meta itemprop="worksFor" content="InnovateTech Labs">
+                <span>InnovateTech Labs (20XX–20XX)</span>
+              </div>
             </div>
             <div class="experience-item">
-              <strong class="position" itemprop="jobTitle">SOFTWARE MANAGER</strong>
-              <div class="company" itemprop="affiliation">NexGen Software (20XX–20XX)</div>
+              <strong class="position">SOFTWARE MANAGER</strong>
+              <div class="company">
+                <meta itemprop="worksFor" content="NexGen Software">
+                <span>NexGen Software (20XX–20XX)</span>
+              </div>
             </div>
             <div class="experience-item">
-              <strong class="position" itemprop="jobTitle">JUNIOR SOFTWARE DEVELOPER</strong>
-              <div class="company" itemprop="affiliation">Tech Solutions Co. (20XX–20XX)</div>
+              <strong class="position">JUNIOR SOFTWARE DEVELOPER</strong>
+              <div class="company">
+                <meta itemprop="worksFor" content="Tech Solutions Co.">
+                <span>Tech Solutions Co. (20XX–20XX)</span>
+              </div>
             </div>
           </div>
         </div>
@@ -484,13 +515,19 @@
         <div class="background-column" itemscope itemtype="https://schema.org/ItemList">
           <h3>CERTIFICATIONS</h3>
           <ul>
-            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/EducationalCredential">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/EducationalOccupationalCredential">
+              <meta itemprop="credentialCategory" content="license">
+              <meta itemprop="recognizedBy" content="Amazon Web Services">
               <span itemprop="name">AWS Certified Developer</span>
             </li>
-            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/EducationalCredential">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/EducationalOccupationalCredential">
+              <meta itemprop="credentialCategory" content="certification">
+              <meta itemprop="recognizedBy" content="Scrum Alliance">
               <span itemprop="name">Scrum Master Certification</span>
             </li>
-            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/EducationalCredential">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/EducationalOccupationalCredential">
+              <meta itemprop="credentialCategory" content="certification">
+              <meta itemprop="recognizedBy" content="Amazon Web Services">
               <span itemprop="name">Amazon Web Services</span>
             </li>
           </ul>
@@ -543,9 +580,12 @@
             <p itemprop="description">ERP especializado en controlar, planificar y optimizar operaciones logísticas.
               Integra procesos en una sola plataforma.</p>
             <p><strong>Tecnologías:</strong> <span itemprop="applicationCategory">Web Application</span></p>
-            <p><strong>Lenguajes:</strong> <span itemprop="programmingLanguage">React, Node.js, MongoDB</span></p>
+            <p><strong>Lenguajes:</strong> 
+              <meta itemprop="softwareRequirements" content="React, Node.js, MongoDB">
+              <span>React, Node.js, MongoDB</span>
+            </p>
             <meta itemprop="operatingSystem" content="Web">
-            <meta itemprop="browserRequirements" content="Requires JavaScript. Requires HTML5.">
+            <meta itemprop="softwareHelp" content="Requires JavaScript. Requires HTML5.">
             <a href="https://github.com/Vick2012/ERP-pc.git" itemprop="downloadUrl" target="_blank">Ver ERP en
               GitHub</a>
           </div>
@@ -554,20 +594,27 @@
             <h4 itemprop="name">API de Tareas</h4>
             <p itemprop="description">API RESTful para gestionar tareas con autenticación.</p>
             <p><strong>Tecnologías:</strong> <span itemprop="applicationCategory">Web API</span></p>
-            <p><strong>Lenguajes:</strong> <span itemprop="programmingLanguage">FastAPI, PostgreSQL, Python</span></p>
+            <p><strong>Lenguajes y Frameworks:</strong> 
+              <meta itemprop="softwareRequirements" content="FastAPI, PostgreSQL, Python">
+              <span>FastAPI, PostgreSQL, Python</span>
+            </p>
             <meta itemprop="operatingSystem" content="Any">
-            <meta itemprop="browserRequirements" content="Requires API access">
+            <meta itemprop="softwareHelp" content="Requires API access">
+            <meta itemprop="featureList" content="RESTful API, Authentication, Task Management">
             <a href="https://github.com/Vick2012/Api.git" itemprop="downloadUrl" target="_blank">Ver API en GitHub</a>
           </div>
 
           <div class="card" itemscope itemtype="https://schema.org/SoftwareApplication">
             <h4 itemprop="name">Portafolio Personal</h4>
             <p itemprop="description">Sitio web personal para mostrar mis proyectos y habilidades.</p>
-            <p><strong>Tecnologías:</strong> <span itemprop="programmingLanguage">Python, Reflex, HTML5, CSS, JS,
-                Node.js (SASS)</span></p>
-            <a href="https://github.com/Vick2012/Portafolio.git" itemprop="downloadUrl" target="_blank">Ver Portafolio
-              en
-              GitHub</a>
+            <p><strong>Tecnologías:</strong> 
+              <meta itemprop="softwareRequirements" content="Python, Reflex, HTML5, CSS, JavaScript, Node.js, SASS">
+              <meta itemprop="applicationCategory" content="Web Application">
+              <meta itemprop="operatingSystem" content="Web">
+              <meta itemprop="softwareHelp" content="Requires modern web browser with JavaScript enabled">
+              <span>Python, Reflex, HTML5, CSS, JS, Node.js (SASS)</span>
+            </p>
+            <a href="https://github.com/Vick2012/Portafolio.git" itemprop="downloadUrl" target="_blank">Ver Portafolio en GitHub</a>
           </div>
         </div>
       </div>
