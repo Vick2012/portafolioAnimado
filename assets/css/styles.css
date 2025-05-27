@@ -1021,7 +1021,8 @@ body.light-theme .slide {
   font-weight: 700;
   margin-bottom: 0.2rem;
   letter-spacing: 0.5px;
-  text-shadow: 0 2px 8px #00ffd144;
+  text-shadow: none;
+  filter: none;
 }
 
 .portfolio-banner p {
@@ -1297,4 +1298,12 @@ button:focus-visible, a:focus-visible, [tabindex]:focus-visible {
 .desvanecer.out {
   opacity: 0;
   transform: translateY(40px);
+}
+
+h2.name {
+  font-family: 'Poppins', Arial, sans-serif;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: none;
+  filter: none;
 }
