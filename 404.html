@@ -158,30 +158,83 @@
                 text-align: center;
             }
         }
+
+        .redirect-block {
+            margin: 32px 0 18px 0;
+            text-align: center;
+        }
+        .redirect-message {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        .redirect-timer {
+            font-size: 1.5rem;
+            color: #3498db;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        .progress-bar-bg {
+            width: 100%;
+            max-width: 340px;
+            height: 10px;
+            background: #e0e7ef;
+            border-radius: 6px;
+            margin: 0 auto 16px auto;
+            overflow: hidden;
+            box-shadow: 0 1px 4px #3498db22;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, #3498db 0%, #2c3e50 100%);
+            border-radius: 6px;
+            transition: width 1s linear;
+        }
+        .cancel-btn {
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 22px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: background 0.2s;
+            box-shadow: 0 2px 8px #e74c3c22;
+        }
+        .cancel-btn:hover {
+            background: #c0392b;
+        }
     </style>
 
     <!-- Redirección automática -->
     <script>
-        // Redirección automática después de 10 segundos
+        // Redirección automática después de 10 segundos con barra de progreso
         let timeLeft = 10;
-        const countdownElement = document.createElement('div');
-        countdownElement.className = 'countdown';
-        document.body.appendChild(countdownElement);
-
-        const countdown = setInterval(() => {
+        const countdownElement = document.getElementById('count');
+        const progressBar = document.getElementById('progress-bar');
+        const cancelBtn = document.getElementById('cancel-redirect');
+        let interval;
+        function updateProgress() {
+            progressBar.style.width = (timeLeft * 10) + '%';
+        }
+        function tick() {
             timeLeft--;
-            countdownElement.textContent = `Serás redirigido a la página principal en ${timeLeft} segundos...`;
-            
+            countdownElement.textContent = timeLeft;
+            updateProgress();
             if (timeLeft <= 0) {
-                clearInterval(countdown);
+                clearInterval(interval);
                 window.location.href = './index.html';
             }
-        }, 1000);
-
-        // Detener la redirección si el usuario interactúa con la página
-        document.addEventListener('click', () => {
-            clearInterval(countdown);
-            countdownElement.style.display = 'none';
+        }
+        updateProgress();
+        interval = setInterval(tick, 1000);
+        cancelBtn.addEventListener('click', () => {
+            clearInterval(interval);
+            document.querySelector('.redirect-block').innerHTML = '<div style="color:#27ae60;font-weight:600;font-size:1.1rem;">Redirección cancelada. Puedes navegar manualmente.</div>';
         });
     </script>
 </head>
@@ -193,7 +246,7 @@
             Lo sentimos, la página que estás buscando no existe o ha sido movida.
             Puedes regresar a la página principal o explorar otras secciones de nuestro sitio.
         </p>
-        
+        <div class="countdown">Serás redirigido a la página principal en <span id="count">10</span> segundos...</div>
         <nav class="navigation-links" itemscope itemtype="https://schema.org/SiteNavigationElement">
             <a href="./index.html" class="nav-link home" itemprop="url">
                 <span itemprop="name">Volver al Inicio</span>

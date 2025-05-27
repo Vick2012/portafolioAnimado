@@ -78,6 +78,21 @@
       transition: none !important;
       animation: none !important;
     }
+
+    /* Forzar que el primer slide sea visible si hay conflicto de display/opacity */
+    .slide.active {
+      display: block !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+    .slide {
+      display: none;
+      opacity: 0;
+    }
+    .slide.active {
+      display: block;
+      opacity: 1;
+    }
   </style>
 
   <!-- Favicon -->
@@ -94,8 +109,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
   </noscript>
   <!-- Preload de la fuente Poppins WOFF2 para mejorar LCP -->
-  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/poppins/v23/pxiByp8kv8JHgFVrLDz8Z1xlEA.woff2"
-    type="font/woff2" crossorigin>
+  <!-- <link rel="preload" as="font" href="https://fonts.gstatic.com/s/poppins/v23/pxiByp8kv8JHgFVrLDz8Z1xlEA.woff2" type="font/woff2" crossorigin> -->
 
   <!-- Preconexión con dominios de fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">

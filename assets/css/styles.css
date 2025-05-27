@@ -6,7 +6,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 1000;
+  z-index: 1;
   pointer-events: none;
 }
 
@@ -1235,4 +1235,9 @@ body.light-theme .slide {
 /* Reforzar tamaño de fuente para h1 en todos los contextos relevantes */
 h1, section h1, article h1, aside h1, nav h1, main h1, header h1, footer h1 {
   font-size: 2.5rem;
+}
+
+main#carousel, .slide {
+  position: relative;
+  z-index: 10;
 }
