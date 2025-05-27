@@ -2,9 +2,9 @@
 <html lang="es" itemscope itemtype="https://schema.org/Blog">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog | Desarrollo Web - Diseño, SEO y Accesibilidad</title>
-    <meta name="description" content="Explora las últimas tendencias en diseño web, herramientas SEO y mejores prácticas de accesibilidad para crear sitios web modernos y efectivos.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Blog de Victor Alarcón sobre desarrollo web, SEO, accesibilidad y tendencias tecnológicas">
+  <title>Blog | Victor Alarcón</title>
   <meta name="author" content="Victor Alarcón">
     
     <!-- Open Graph / Facebook -->
@@ -82,6 +82,92 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
     </noscript>
     <link rel="preload" as="font" href="https://fonts.gstatic.com/s/poppins/v23/pxiByp8kv8JHgFVrLDz8Z1xlEA.woff2" type="font/woff2" crossorigin>
+
+    <!-- Estilos críticos inline para evitar FOUC -->
+    <style>
+      :root {
+        --blog-primary: #1a365d;
+        --blog-secondary: #2d4a7c;
+        --blog-accent: #3182ce;
+        --blog-bg: #f7fafc;
+        --blog-text: #2d3748;
+        --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+      }
+      
+      html {
+        background: var(--blog-bg);
+      }
+      
+      body {
+        margin: 0;
+        background: var(--blog-bg);
+        color: var(--blog-text);
+        font-family: var(--font-main);
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      
+      /* Reservar espacio para elementos críticos */
+      .blog-header {
+        min-height: 400px;
+        background: linear-gradient(120deg, rgba(49,130,206,0.85) 0%, rgba(26,54,93,0.85) 100%);
+      }
+      
+      .blog-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      
+      /* Asegurar que los elementos críticos sean visibles inmediatamente */
+      .blog-header, .blog-grid, .blog-card {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      
+      /* Prevenir transiciones durante la carga inicial */
+      * {
+        transition: none !important;
+        animation: none !important;
+      }
+      
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --blog-bg: #0f172a;
+          --blog-text: #f1f5f9;
+        }
+      }
+    </style>
+
+    <!-- Hojas de estilos con carga optimizada -->
+    <link rel="preload" href="../assets/css/blog.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="../assets/css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="../assets/css/blog.css">
+      <link rel="stylesheet" href="../assets/css/styles.css">
+    </noscript>
+    
+    <!-- Script para aplicar estilos no críticos después de la carga -->
+    <script>
+      function loadNonCriticalStyles() {
+        const styles = [
+          '../assets/css/blog.css',
+          '../assets/css/styles.css'
+        ];
+        styles.forEach(href => {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = href;
+          document.head.appendChild(link);
+        });
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadNonCriticalStyles);
+      } else {
+        loadNonCriticalStyles();
+      }
+    </script>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
@@ -335,11 +421,5 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZL5KCS2"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-
-    <style>
-      .blog-header {
-        min-height: 400px;
-      }
-    </style>
 </body>
 </html>

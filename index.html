@@ -18,6 +18,68 @@
     content="Portafolio de Victor Alarcón, Ingeniero de Software apasionado por la tecnología y los desafíos.">
   <title>Portafolio | Victor Alarcón</title>
 
+  <!-- Estilos críticos inline para evitar FOUC -->
+  <style>
+    :root {
+      --color-bg: #0a0a33;
+      --color-text: #ffffff;
+      --color-accent: #00ffd1;
+      --font-main: 'Poppins', 'Arial', sans-serif;
+    }
+    
+    html {
+      background: var(--color-bg);
+    }
+    
+    body {
+      margin: 0;
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-main);
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+    
+    /* Reservar espacio para elementos críticos */
+    .circle-main {
+      min-width: 300px;
+      min-height: 300px;
+      background: var(--color-bg);
+    }
+    
+    .circle-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+      aspect-ratio: 1/1;
+    }
+    
+    #tsparticles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1000;
+      pointer-events: none;
+      background: var(--color-bg);
+    }
+    
+    /* Asegurar que los elementos críticos sean visibles inmediatamente */
+    .top-bar, .social-icons, .floating-circles {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+    
+    /* Prevenir transiciones durante la carga inicial */
+    * {
+      transition: none !important;
+      animation: none !important;
+    }
+  </style>
+
   <!-- Favicon -->
   <link rel="icon" href="images/favicon.png" />
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
@@ -39,8 +101,27 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Hoja de estilos principal no bloqueante -->
-  <link rel="stylesheet" href="assets/css/styles.css" media="print" onload="this.media='all'">
+  <!-- Hoja de estilos principal con carga optimizada -->
+  <link rel="preload" href="assets/css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/styles.css"></noscript>
+  
+  <!-- Script para aplicar estilos no críticos después de la carga -->
+  <script>
+    // Función para cargar estilos no críticos
+    function loadNonCriticalStyles() {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'assets/css/styles.css';
+      document.head.appendChild(link);
+    }
+    
+    // Cargar estilos no críticos después de que la página esté lista
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadNonCriticalStyles);
+    } else {
+      loadNonCriticalStyles();
+    }
+  </script>
 
   <!-- Script para aplicar tema claro u oscuro antes de pintar -->
   <script>
