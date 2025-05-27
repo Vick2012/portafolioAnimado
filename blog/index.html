@@ -181,7 +181,7 @@
 
   <main id="main-content" class="blog-container" role="main">
       <header class="blog-header">
-        <svg class="wave-bg" viewBox="0 0 1440 400" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+        <svg class="wave-bg" viewBox="0 0 1440 400" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true" width="100%" height="100%">
           <defs>
             <linearGradient id="waveGradient" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stop-color="#3182ce" stop-opacity="0.22"/>
@@ -415,6 +415,13 @@
         }
       }, true);
     });
+    // Fallback: si no hay interacción, cargar tras 5 segundos
+    setTimeout(function() {
+      if (!window.__trackingLoaded) {
+        window.__trackingLoaded = true;
+        loadTrackingScripts();
+      }
+    }, 5000);
   </script>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WZL5KCS2"
