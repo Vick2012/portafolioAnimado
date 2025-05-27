@@ -1275,3 +1275,26 @@ button:focus-visible, a:focus-visible, [tabindex]:focus-visible {
   box-shadow: 0 0 0 4px rgba(59,232,196,0.13);
   border-radius: 24px;
 }
+
+.slide img, .carrusel-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  display: block;
+  object-fit: cover;
+  min-height: 320px;
+  background: #0a0a33;
+}
+
+.desvanecer {
+  transition: opacity 0.5s cubic-bezier(.23,1.01,.32,1), transform 0.5s cubic-bezier(.23,1.01,.32,1);
+  will-change: opacity, transform;
+}
+.desvanecer.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.desvanecer.out {
+  opacity: 0;
+  transform: translateY(40px);
+}
