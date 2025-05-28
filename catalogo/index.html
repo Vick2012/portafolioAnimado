@@ -512,5 +512,15 @@
         min-height: 600px;
       }
     </style>
+    <style>#tsparticles { display: none !important; }</style>
+    <script>
+      // Oculta el fondo animado de partículas solo en el catálogo
+      document.addEventListener('DOMContentLoaded', function() {
+        var particles = document.getElementById('tsparticles');
+        if (particles) {
+          particles.style.display = 'none';
+        }
+      });
+    </script>
 </body>
 </html> 

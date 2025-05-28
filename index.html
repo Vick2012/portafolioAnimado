@@ -728,6 +728,18 @@
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
   <script src="assets/js/particles.js" defer></script>
   <script src="assets/js/main.js" defer></script>
+  <script>
+    // Oculta el fondo animado de partículas solo en el catálogo
+    document.addEventListener('DOMContentLoaded', function() {
+      const path = window.location.pathname.toLowerCase();
+      if (path.includes('/catalogo') || path.includes('/catalog')) {
+        const particles = document.getElementById('tsparticles');
+        if (particles) {
+          particles.style.display = 'none';
+        }
+      }
+    });
+  </script>
 </body>
 
 </html>
