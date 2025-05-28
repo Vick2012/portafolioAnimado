@@ -22,6 +22,7 @@
     
     html {
       background: var(--color-bg);
+      position: relative;
     }
     
     body {
@@ -31,6 +32,8 @@
       font-family: var(--font-main);
       opacity: 1 !important;
       visibility: visible !important;
+      position: relative;
+      z-index: 1;
     }
     
     /* Reservar espacio para elementos críticos */
@@ -55,9 +58,17 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      z-index: 1000;
+      z-index: -1;
       pointer-events: none;
       background: var(--color-bg);
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+    
+    /* Asegurar que el contenido principal esté por encima de las partículas */
+    body > *:not(#tsparticles) {
+      position: relative;
+      z-index: 1;
     }
     
     /* Asegurar que los elementos críticos sean visibles inmediatamente */
@@ -351,8 +362,8 @@
     </div>
   </header>
 
-  <main id="carousel">
-    <section id="slide-0" class="slide active first-slide-visible" aria-label="Portada" itemscope itemtype="https://schema.org/Person">
+  <main>
+    <section id="slide-0" class="slide" aria-label="Portada" itemscope itemtype="https://schema.org/Person">
       <div class="slide0-flex">
         <div class="slide0-info">
           <div class="top-bar">
@@ -652,41 +663,44 @@
     </section>
   </main>
 
-  <nav class="nav-buttons" aria-label="Navegación entre secciones">
-    <button id="prevSlide">Anterior</button>
-    <button id="nextSlide">Siguiente</button>
-  </nav>
+  <style>
+    /* Estilos para la disposición vertical */
+    .slide {
+      display: block !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      margin-bottom: 2rem;
+      padding: 2rem 0;
+    }
 
-  <script defer>
-    document.addEventListener("DOMContentLoaded", () => {
-      let currentSlide = 0;
-      const slides = document.querySelectorAll(".slide");
+    /* Eliminar estilos del carrusel */
+    #carousel {
+      min-height: auto;
+    }
 
-      function showSlide(index) {
-        slides.forEach((slide, i) => {
-          slide.style.opacity = i === index ? "1" : "0"; // Añadir transición de opacidad
-          slide.classList.toggle("active", i === index);
-        });
-      }
+    /* Ajustar espaciado entre secciones */
+    .slide:not(:last-child) {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
 
-      // Añadir transición suave mediante CSS
-      slides.forEach(slide => {
-        slide.style.transition = "opacity 0.5s ease-in-out";
-      });
+    /* Asegurar que las imágenes mantengan sus dimensiones */
+    .circle-main img {
+      display: block;
+      width: 300px;
+      height: 300px;
+    }
 
-      showSlide(currentSlide);
+    .about-image img {
+      width: 400px;
+      height: 400px;
+    }
 
-      document.getElementById("prevSlide").addEventListener("click", () => {
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        showSlide(currentSlide);
-      });
-
-      document.getElementById("nextSlide").addEventListener("click", () => {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
-      });
-    });
-  </script>
+    .background-image img,
+    .project-image img {
+      width: 600px;
+      height: 400px;
+    }
+  </style>
 
   <script defer>
     document.addEventListener("DOMContentLoaded", () => {
@@ -711,31 +725,9 @@
     });
   </script>
   <!-- Scripts optimizados -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+  <script src="assets/js/particles.js" defer></script>
   <script src="assets/js/main.js" defer></script>
-  <!-- <script src="assets/js/carrusel.js" defer></script> -->
-  <style>
-    /* Reservar espacio para el carousel y evitar CLS */
-    #carousel {
-      min-height: 700px;
-    }
-
-    .circle-main img {
-      display: block;
-      width: 300px;
-      height: 300px;
-    }
-
-    .about-image img {
-      width: 400px;
-      height: 400px;
-    }
-
-    .background-image img,
-    .project-image img {
-      width: 600px;
-      height: 400px;
-    }
-  </style>
 </body>
 
 </html>
