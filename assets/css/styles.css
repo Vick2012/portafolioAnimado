@@ -1356,3 +1356,7 @@ h2.name {
   opacity: 1 !important;
   z-index: 2;
 }
+
+body[data-page='catalogo'] #tsparticles {
+  display: none !important;
+}

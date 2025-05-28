@@ -87,8 +87,8 @@ body {
 
 /* Filtros */
 .filters {
-  position: static !important;
-  top: unset !important;
+  position: relative !important;
+  z-index: 100 !important;
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 2px 16px 0 #e6b98022;
@@ -97,7 +97,6 @@ body {
   padding: 2rem 2.5rem 1.2rem 2.5rem;
   max-width: 1200px;
   width: 100%;
-  z-index: 1;
 }
 
 .filter-form {
